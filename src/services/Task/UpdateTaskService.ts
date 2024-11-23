@@ -9,7 +9,6 @@ interface TaskRequest {
 
 class UpdateTaskService {
     async execute({ id, description, urgencyId, deadline }: TaskRequest) {
-
         const task = await prismaClient.task.update({
             where: {
                 id: id
