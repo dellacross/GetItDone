@@ -16,13 +16,15 @@ datasource db {
 model Task {
   id String   @id @default(uuid())
   description String
-  urgencyId Int
   completed Boolean  @default(false)
   deadline  DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("tasks")
+
+  urgencyId Int
+  urgency Urgency @relation(fields: [urgencyId], references: [id])
 }
 
 model Urgency {
@@ -34,4 +36,6 @@ model Urgency {
   updatedAt DateTime @updatedAt
 
   @@map("urgencies")
+
+  tasks Task[]
 }
