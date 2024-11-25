@@ -14,8 +14,8 @@ class CreateUrgencyController {
     const urgency = await createUrgency.execute({ name, backgroundColor, textColor });
 
     return res.json({
-        message: "Urgency created successfully",
-        urgency: urgency
+      message: "Urgency created successfully",
+      urgency: urgency
     });
   }
 }
