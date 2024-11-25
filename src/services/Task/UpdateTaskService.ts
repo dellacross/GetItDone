@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 interface TaskRequest {
     description: string;
     urgencyId: number;
-    deadline: Date;
+    deadline: string;
     id: string;
 }
 
