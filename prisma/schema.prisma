@@ -26,6 +26,9 @@ model Task {
 
   urgencyId Int
   urgency Urgency @relation(fields: [urgencyId], references: [id])
+
+  categoryId String
+  category Category @relation(fields: [categoryId], references: [id])
 }
 
 model Urgency {
@@ -37,6 +40,18 @@ model Urgency {
   updatedAt DateTime @updatedAt
 
   @@map("urgencies")
+
+  tasks Task[]
+}
+
+model Category {
+  id String @id @default(uuid())
+  description String
+  color String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("categories")
 
   tasks Task[]
 }
