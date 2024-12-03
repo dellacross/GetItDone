@@ -4,15 +4,19 @@ interface TaskRequest {
     description: string;
     urgencyId: number;
     deadline: string;
+    categoryId: string;
+    groupId: string;
 }
 
 class CreateTaskService {
-    async execute({ description, urgencyId, deadline }: TaskRequest) {
+    async execute({ description, urgencyId, deadline, categoryId, groupId }: TaskRequest) {
         const task = await prismaClient.task.create({
             data: {
                 description: description,
                 urgencyId: urgencyId,
-                deadline: deadline
+                deadline: deadline,
+                categoryId: categoryId,
+                groupId: groupId
             }
         })
 
